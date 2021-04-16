@@ -29,9 +29,7 @@
     "nodemon": "^2.0.7"
   },
   "engines": {
-    "node:" "14.x" //indicate which version of node youre using
+    "node:" "14.x" 
   }
 }
 
-// procfile web: npm start
-// this runs the command in when heroku receives your server
