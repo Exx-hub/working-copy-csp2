@@ -10,3 +10,6 @@ const userSchema = Schema({
 	isAdmin: {type: Boolean, default: false},
 	mobileNumber: {type: String}
 })
+
+
+module.exports = mongoose.model('user', userSchema);

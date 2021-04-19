@@ -5,6 +5,13 @@ app.use(cors());
 const mongoose = require('mongoose');
 require('dotenv').config();
 
+app.use(express.json());
+
+// Application routes
+const userRoutes = require('./routes/userRoutes');
+
+
+
 // ENV VARIABLES
 const port = process.env.PORT || 3000;
 const dbUri = process.env.DB_CONN_STR;
@@ -27,6 +34,12 @@ app.get('/', (req,res) => {
 		"message": "Course Booking System Root Route"
 	})
 })
+
+// Use Application routes
+// ---app.use(path,routeObject)---
+
+app.use('/api/users', userRoutes)
+
 
 // SERVER LISTEN
 app.listen(3000, () => {
