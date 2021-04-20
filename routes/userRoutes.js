@@ -14,12 +14,13 @@ const userController = require("../controllers/userController");
 router.post("/register", (req, res) => {
 	const userData = req.body;
 	
-	let newUserSaved = userController.register(userData);
-	console.dir(newUserSaved);
-	res.json({
-		message: "User saved successfully",
-		data: newUserSaved
+	userController.register(userData).then(result => {
+		res.send({
+			message: "New user has been created.",
+			data: result
+		})
 	})
+	// res.send("hello")
 });
 
 module.exports = router; // export to get access outside of this module when imported

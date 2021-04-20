@@ -18,14 +18,10 @@ module.exports.register = (userData) => {
 	})
 
 	
-	newUser.save((err,savedUser) => {
-		if(err) return console.error(err);
+	return newUser.save().then((savedUser,err) => {
+		if(err) return false;
 
-		if(!savedUser) {
-			return "Save unsuccessful!"
-		}
-
-		return savedUser
+		return true;
 	})
 
 };
