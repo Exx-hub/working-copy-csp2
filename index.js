@@ -8,9 +8,9 @@ require("dotenv").config();
 app.use(express.json());
 
 // Application routes
-const userRoutes = require("./routes/userRoutes");
+// const userRoutes = require("./routes/userRoutes");
 
-console.log(userRoutes);
+// console.log(userRoutes);
 
 /* Use Application routes
  * ---app.use(path,routeObject)---
@@ -19,7 +19,7 @@ console.log(userRoutes);
  * use userRoutes file to handle endpoints that start with /api/users
  */
 
-app.use("/api/users", userRoutes);
+// app.use("/api/users", userRoutes);
 
 // ENV VARIABLES
 const port = process.env.PORT || 3000;
