@@ -20,7 +20,27 @@ router.post("/register", (req, res) => {
 			data: result
 		})
 	})
-	// res.send("hello")
 });
+
+
+// ****CHECK IF USER ALREADY EXISTING using email****
+
+router.get('/check-email', (req,res) => {
+	const emailObj = {emailAddress: req.body.emailAddress}
+
+	userController.verifyEmail(emailObj).then((result,err) => {
+		  
+		  if(err) res.status("404").send("error");
+
+		  if(result){
+			   res.json({message: "email already exists", data: true});
+		   } else {
+			   res.json({message: "Your email can be used", data: false});
+		   }
+
+		// if no else clause gets error cannot set headers after they
+		// are sent to the client.
+	});	
+})
 
 module.exports = router; // export to get access outside of this module when imported

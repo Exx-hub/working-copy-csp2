@@ -26,6 +26,14 @@ module.exports.register = (userData) => {
 
 };
 
+// Check is user already exists
+
+module.exports.verifyEmail = (emailObj) => {
+	return User.find(emailObj).then(userArr => {
+		return userArr.length > 0 ? true : false;
+	})
+}
+
 // Retrieve all users
 
 // Retrieve specific user by Id
