@@ -43,4 +43,18 @@ router.post('/check-email', (req,res) => {
 	});	
 })
 
+
+// ******LOGIN A USER*******
+router.post('/login',(req,res) => {
+	const userData = req.body;
+	userController.login(userData).then((result,err) => {
+		if(err) res.status("404").send("error");
+
+		res.send({
+			data: result
+		});
+	});
+})
+
+
 module.exports = router; // export to get access outside of this module when imported
