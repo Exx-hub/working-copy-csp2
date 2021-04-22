@@ -25,7 +25,7 @@ router.post("/register", (req, res) => {
 
 // ****CHECK IF USER ALREADY EXISTING using email****
 
-router.get('/check-email', (req,res) => {
+router.post('/check-email', (req,res) => {
 	const emailObj = {emailAddress: req.body.emailAddress}
 
 	userController.verifyEmail(emailObj).then((result,err) => {
