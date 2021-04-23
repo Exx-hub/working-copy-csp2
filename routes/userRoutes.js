@@ -50,11 +50,18 @@ router.post('/login',(req,res) => {
 	userController.login(userData).then((result,err) => {
 		if(err) res.status("404").send("error");
 
+		const {data, userDetails} = result;
+
 		res.send({
-			data: result
+			data,
+			userDetails
 		});
 	});
 })
 
+// ******RETRIEVE SPECIFIC USER BY ID*******
+// router.get('/details', (req,res) => {
+// 	
+// });
 
 module.exports = router; // export to get access outside of this module when imported
