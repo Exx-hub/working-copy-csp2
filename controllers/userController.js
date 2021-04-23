@@ -35,7 +35,7 @@ module.exports.verifyEmail = (emailObj) => {
 };
 
 
-
+// LOGIN USER
 module.exports.login = (userData) => {
 	const {emailAddress, password} = userData;
 
@@ -71,9 +71,17 @@ module.exports.login = (userData) => {
 	})
 };
 
+// Retrieve specific user by Id
+module.exports.getUserDetails = (userId) => {
+	return User.findById(userId, "-password").then(foundUser => {
+		return foundUser; // use password in projection to return only the password
+	});
+}
+
+
 // Retrieve all users
 
-// Retrieve specific user by Id
+
 
 // Update user details
 
