@@ -65,20 +65,3 @@ module.exports.login = (userData) => {
 // Update user details
 
 // Delete an existing user
-
-
-
-
-// Login a user
-// module.exports.loginUer = (userData) = {
-// 	const {emailAddress,password} = userData;
-// 	console.log(emailAddress);
-// 	console.log(password);
-// 
-// 	return User.findOne({emailAddress}).then()
-// 
-// 	return User.findOne({emailAddress}, (err,foundItem) => {
-// 		if(err) console.error(err)
-// 			return foundItem;
-// 	})
-// }
