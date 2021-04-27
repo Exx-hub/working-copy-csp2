@@ -8,7 +8,15 @@ const userSchema = new Schema({
 	emailAddress: {type: String},
 	password: {type: String},
 	isAdmin: {type: Boolean, default: false},
-	mobileNumber: {type: String}
+	mobileNumber: {type: String},
+	enrollments: [{
+		courseId: {type: String},
+		enrolledOn: {
+			type: Date, 
+			default: new Date() 
+		},
+		status: {type: String}
+	}]
 })
 
 
