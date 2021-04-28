@@ -9,7 +9,7 @@ app.use(express.json());
 
 // Application routes
 const userRoutes = require("./routes/userRoutes");
-const courseRoutes = require("./routes/courseRoutes")
+const courseRoutes = require("./routes/courseRoutes");
 
 
 /* Use Application routes
