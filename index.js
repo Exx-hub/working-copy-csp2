@@ -9,8 +9,8 @@ app.use(express.json());
 
 // Application routes
 const userRoutes = require("./routes/userRoutes");
+const courseRoutes = require("./routes/courseRoutes");
 
-// console.log(userRoutes);
 
 /* Use Application routes
  * ---app.use(path,routeObject)---
@@ -20,6 +20,7 @@ const userRoutes = require("./routes/userRoutes");
  */
 
 app.use("/api/users", userRoutes);
+app.use("/api/courses", courseRoutes);
 
 // ENV VARIABLES
 const port = process.env.PORT || 3000;
