@@ -72,4 +72,18 @@ router.get('/details', (req,res) => {
 	});
 });
 
+
+//enroll a to course
+router.post("/enroll", (req,res) => {
+	console.log(req.body)
+	const {userId, courseName} = req.body;
+
+	userController.enroll(userId,courseName).then(result => {
+		res.send({
+			message: `Enrolled to ${courseName} successfully!`,
+			data: result
+		});
+	})
+})
+
 module.exports = router; // export to get access outside of this module when imported

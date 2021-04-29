@@ -10,14 +10,14 @@ const userSchema = new Schema({
 	isAdmin: {type: Boolean, default: false},
 	mobileNumber: {type: String},
 	enrollments: [{
-		courseId: {type: String},
+		courseName: {type: String},
 		enrolledOn: {
 			type: Date, 
 			default: new Date() 
 		},
-		status: {type: String}
+		status: {type: String, default: "active"}
 	}]
 })
 
-
 module.exports = mongoose.model('user', userSchema);
+

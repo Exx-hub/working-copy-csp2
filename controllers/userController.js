@@ -1,4 +1,5 @@
 const User = require("../models/User");
+const Course = require("../models/Course");
 
 const bcrypt = require('bcrypt'); // used to encrpyt data like passwords
 
@@ -40,7 +41,7 @@ module.exports.login = (userData) => {
 	const {emailAddress, password} = userData;
 
 	return User.findOne({emailAddress}, 'password').then((foundUser) => {
-		console.dir(foundUser);
+		// console.dir(foundUser);
 
 		if(foundUser === null){
 			return {
@@ -78,11 +79,29 @@ module.exports.getUserDetails = (userId) => {
 	});
 }
 
+// enroll a user to a course
 
-// Retrieve all users
+module.exports.enroll = (userId, courseName) => {
+	return User.findById(userId).then((foundUser,err) => {
+			if(err) return console.error(err);
 
+				foundUser.enrollments.push({courseName});
 
+				return foundUser.save().then((savedUser,err) => {
+					if(err) return console.error(err);
 
-// Update user details
+					return Course.findOne({name: courseName}).then((course,err) => {
+						if(err) return console.error(err);
 
-// Delete an existing user
+						course.enrollees.push({
+							userId: userId, 
+							lastName: savedUser.lastName
+						});
+
+						return course.save().then((savedCourse,err) => {
+							return err ? false : true;
+						})
+					})
+				 })
+ 			})
+		};

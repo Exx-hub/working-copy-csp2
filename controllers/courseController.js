@@ -6,7 +6,8 @@ module.exports.getAll = () => {
 	})
 }
 
-// module.exports.getAll = async () => {
-// 	let courses = await Course.find()
-// 		return courses;
-// }
+module.exports.getCourseDetails = (id) => {
+	return Course.findById(id).then(course => {
+		return course
+	})
+}
