@@ -15,7 +15,7 @@ const userSchema = new Schema({
 			type: Date, 
 			default: new Date() 
 		},
-		status: {type: String}
+		status: {type: String, default: "active"}
 	}]
 })
 
