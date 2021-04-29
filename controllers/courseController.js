@@ -10,3 +10,17 @@ module.exports.getAll = () => {
 // 	let courses = await Course.find()
 // 		return courses;
 // }
+
+module.exports.getCourseDetails = (id) => {
+	return Course.findById(id).then(course => {
+		return course
+	})
+}
+
+// ??
+//  
+// module.exports.getOne = (id) => {
+// 	return Course.findById(id).then(course => {
+// 		return course
+// 	})
+// }
