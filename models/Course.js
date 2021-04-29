@@ -8,10 +8,10 @@ const courseSchema = new mongoose.Schema({
 	createdOn: {type: Date, default: new Date()},
 	enrollees: [{
 		userId: {type: String},
-		enrolledOn: {type: Date, default: new Date()},
-		status: {type: String, default: "active"}
+		lastName: {type: String}
 	}]
 })
 
 
 module.exports = mongoose.model("Course", courseSchema);
+
