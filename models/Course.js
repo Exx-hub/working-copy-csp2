@@ -7,11 +7,14 @@ const courseSchema = new mongoose.Schema({
 	isActive: {type: Boolean, default: true},
 	createdOn: {type: Date, default: new Date()},
 	enrollees: [{
-		userId: {type: String},
-		lastName: {type: String}
+		type: mongoose.Schema.Types.ObjectId,
+		ref: 'User'
 	}]
 })
 
 
 module.exports = mongoose.model("Course", courseSchema);
 
+
+
+// enrollees: [ { userId: {type: String } }]
