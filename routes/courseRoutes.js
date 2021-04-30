@@ -21,22 +21,5 @@ router.get("/", (req,res) => {
 	}
 })
 
-// router.get("/", async (req,res) => {
-// 	let courses = await courseController.getAll()
-// 		res.send({
-// 			courses
-// 		});
-// })
-
-// get specific course via id
-
-// router.get("/", (req,res) => {
-// 	console.log(req.query)
-// 	courseController.getOne(req.query.id).then(course => {
-// 		res.send(course);
-// 	})
-// })
-
-
 
 module.exports = router;
