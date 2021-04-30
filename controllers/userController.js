@@ -79,7 +79,31 @@ module.exports.getUserDetails = (userId) => {
 	});
 }
 
-// enroll a user to a course
+
+// enroll a user to a course part 2
+
+module.exports.enroll = async (userId,courseId) => {
+	
+	let foundUser = await User.findById(userId);
+	let foundCourse = await Course.findById(courseId);
+
+			foundUser.enrollments.push({
+				courseName: foundCourse.name
+			})
+
+		return foundUser.save().then((savedUser,err) => {
+
+			foundCourse.enrollees.push(userId)
+
+
+				return foundCourse.save().then((savedCourse, err) => {
+					return err ? false : true
+		})
+	})
+}
+
+
+// enroll a user to a course -- my way or the highway
 
 // module.exports.enroll = (userId, courseId) => {
 // 	return User.findById(userId).then((foundUser,err) => {
@@ -104,26 +128,3 @@ module.exports.getUserDetails = (userId) => {
 // 				 })
 //  			})
 // 		};
-
-
-// enroll a user to a course part 2
-
-module.exports.enroll = async (userId,courseId) => {
-	
-	let foundUser = await User.findById(userId);
-	let foundCourse = await Course.findById(courseId);
-
-			foundUser.enrollments.push({
-				courseName: foundCourse.name
-			})
-
-		return foundUser.save().then((savedUser,err) => {
-
-			foundCourse.enrollees.push(userId)
-
-
-				return foundCourse.save().then((savedCourse, err) => {
-					return err ? false : true
-		})
-	})
-}
