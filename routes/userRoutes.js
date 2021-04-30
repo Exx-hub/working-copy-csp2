@@ -74,13 +74,17 @@ router.get('/details', (req,res) => {
 
 
 //enroll a to course
-router.post("/enroll", async (req,res) => {
+router.post("/enroll", (req,res) => {
 	// console.log(req.body)
 	const {userId, courseId} = req.body;
 
-	let result = await userController.enroll(userId,courseId)
+	userController.enroll(userId,courseId).then(result => {
+		res.send({
+			messge: result
+		})
+	})
 	
-		res.send( {data: result} )
+		
 })
 
 module.exports = router; // export to get access outside of this module when imported

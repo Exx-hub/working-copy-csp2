@@ -11,6 +11,10 @@ app.use(express.json());
 const userRoutes = require("./routes/userRoutes");
 const courseRoutes = require("./routes/courseRoutes");
 
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  next();
+});
 
 /* Use Application routes
  * ---app.use(path,routeObject)---
