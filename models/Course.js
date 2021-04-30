@@ -19,12 +19,12 @@ const courseSchema = new mongoose.Schema({
 module.exports = mongoose.model("Course", courseSchema);
 
 
-enrollees: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User'
-    }]
+// enrollees: [{
+//         type: mongoose.Schema.Types.ObjectId,
+//         ref: 'User'
+//     }]
 
-//
+
 
 
 
