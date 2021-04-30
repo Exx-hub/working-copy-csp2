@@ -6,10 +6,7 @@ const courseSchema = new mongoose.Schema({
 	price: {type: Number},
 	isActive: {type: Boolean, default: true},
 	createdOn: {type: Date, default: new Date()},
-	enrollees: [{
-		type: mongoose.Schema.Types.ObjectId,
-		ref: 'User'
-	}]
+	enrollees: [{ userId: {type: String } }]
 })
 
 
@@ -18,3 +15,8 @@ module.exports = mongoose.model("Course", courseSchema);
 
 
 // enrollees: [ { userId: {type: String } }]
+
+// {
+//     type: mongoose.Schema.Types.ObjectId,
+//     ref: 'User'
+//   }

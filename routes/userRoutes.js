@@ -80,7 +80,7 @@ router.post("/enroll", (req,res) => {
 
 	userController.enroll(userId,courseId).then(result => {
 		res.send({
-			messge: result
+			message: result
 		})
 	})
 	
