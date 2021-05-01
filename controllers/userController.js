@@ -93,7 +93,7 @@ module.exports.enroll = async (userId,courseId) => {
 
 		return foundUser.save().then((savedUser,err) => {
 
-			foundCourse.enrollees.push({userId})
+			foundCourse.enrollees.push(userId)
 
 
 				return foundCourse.save().then((savedCourse, err) => {

@@ -9,6 +9,18 @@ const userController = require("../controllers/userController");
 // ---Primary user routes---
 // root route: /api/users
 
+//enroll a to course
+router.post("/enroll", (req,res) => {
+	// console.log(req.body)
+	const {userId, courseId} = req.body;
+
+	userController.enroll(userId,courseId).then(result => {
+		res.send({
+			message: result
+		})
+	})	
+})
+
 // ***Create a new user*****
 
 router.post("/register", (req, res) => {
@@ -73,18 +85,6 @@ router.get('/details', (req,res) => {
 });
 
 
-//enroll a to course
-router.post("/enroll", (req,res) => {
-	// console.log(req.body)
-	const {userId, courseId} = req.body;
 
-	userController.enroll(userId,courseId).then(result => {
-		res.send({
-			message: result
-		})
-	})
-	
-		
-})
 
 module.exports = router; // export to get access outside of this module when imported

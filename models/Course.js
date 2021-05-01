@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
 const courseSchema = new mongoose.Schema({
     name: String,
@@ -12,21 +13,25 @@ const courseSchema = new mongoose.Schema({
       type: Date,
       default: new Date()
     },
-     enrollees: [ { userId: {type: String } }]
+     enrollees: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
+    }]
 });
 
 
 module.exports = mongoose.model("Course", courseSchema);
 
 
+
+
+// enrollees: [ { userId: {type: String } }]
+
 // enrollees: [{
 //         type: mongoose.Schema.Types.ObjectId,
 //         ref: 'User'
 //     }]
-
-
-
-
+  
 
 
   // enrollees: [{ userId: {type: String } }]

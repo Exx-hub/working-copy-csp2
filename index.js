@@ -11,11 +11,6 @@ app.use(express.json());
 const userRoutes = require("./routes/userRoutes");
 const courseRoutes = require("./routes/courseRoutes");
 
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
-  next();
-});
-
 /* Use Application routes
  * ---app.use(path,routeObject)---
  * take everything that has to do with '/api/users' put it in a separate folder
