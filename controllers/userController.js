@@ -79,29 +79,55 @@ module.exports.getUserDetails = (userId) => {
 	});
 }
 
-// enroll a user to a course
 
-module.exports.enroll = (userId, courseName) => {
-	return User.findById(userId).then((foundUser,err) => {
-			if(err) return console.error(err);
+// enroll a user to a course part 2
 
-				foundUser.enrollments.push({courseName});
+module.exports.enroll = async (userId,courseId) => {
+	
+	let foundUser = await User.findById(userId);
+	let foundCourse = await Course.findById(courseId);
 
-				return foundUser.save().then((savedUser,err) => {
-					if(err) return console.error(err);
+			foundUser.enrollments.push({
+				courseName: foundCourse.name
+			})
 
-					return Course.findOne({name: courseName}).then((course,err) => {
-						if(err) return console.error(err);
+		return foundUser.save().then((savedUser,err) => {
 
-						course.enrollees.push({
-							userId: userId, 
-							lastName: savedUser.lastName
-						});
+			foundCourse.enrollees.push(userId)
 
-						return course.save().then((savedCourse,err) => {
-							return err ? false : true;
-						})
-					})
-				 })
- 			})
-		};
+
+				return foundCourse.save().then((savedCourse, err) => {
+					return err ? false : true
+		})
+	})
+}
+
+
+// enroll a user to a course --callback way
+// 
+// module.exports.enroll = (userId, courseId) => {
+// 	return User.findById(userId).then((foundUser,err) => {
+// 			if(err) return console.error(err);
+// 
+// 				foundUser.enrollments.push({courseName});
+// 
+// 				return foundUser.save().then((savedUser,err) => {
+// 					if(err) return console.error(err);
+// 
+// 					return Course.findById(courseId).then((course,err) => {
+// 						if(err) return console.error(err);
+// 
+// 						course.enrollees.push({
+// 							userId: userId, 
+// 						});
+// 
+// 						return course.save().then((savedCourse,err) => {
+// 							return err ? false : true;
+// 						})
+// 					})
+// 				 })
+//  			})
+// 		};
+
+
+

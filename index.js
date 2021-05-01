@@ -11,7 +11,6 @@ app.use(express.json());
 const userRoutes = require("./routes/userRoutes");
 const courseRoutes = require("./routes/courseRoutes");
 
-
 /* Use Application routes
  * ---app.use(path,routeObject)---
  * take everything that has to do with '/api/users' put it in a separate folder
