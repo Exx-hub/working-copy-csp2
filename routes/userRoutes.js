@@ -79,7 +79,7 @@ router.get('/details', (req,res) => {
 		if(err) res.status("404").send("error");
 
 		res.send({
-			userDetails: result
+			message: result
 		});
 	});
 });
