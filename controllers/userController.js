@@ -103,7 +103,7 @@ module.exports.enroll = async (userId,courseId) => {
 }
 
 
-// enroll a user to a course -- my way or the highway
+// enroll a user to a course --callback way
 // 
 // module.exports.enroll = (userId, courseId) => {
 // 	return User.findById(userId).then((foundUser,err) => {

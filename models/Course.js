@@ -13,7 +13,7 @@ const courseSchema = new mongoose.Schema({
       type: Date,
       default: new Date()
     },
-     enrollees: [{
+    enrollees: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
     }]
@@ -21,17 +21,3 @@ const courseSchema = new mongoose.Schema({
 
 
 module.exports = mongoose.model("Course", courseSchema);
-
-
-
-
-// enrollees: [ { userId: {type: String } }]
-
-// enrollees: [{
-//         type: mongoose.Schema.Types.ObjectId,
-//         ref: 'User'
-//     }]
-  
-
-
-  // enrollees: [{ userId: {type: String } }]
