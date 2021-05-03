@@ -7,7 +7,13 @@ module.exports.getAll = () => {
 }
 
 module.exports.getCourseDetails = (id) => {
-	return Course.findById(id).then(course => {
+	return Course.findById(id).populate('enrollees', '-password -__v -enrollments').then(course => {
 		return course
 	})
 }
+
+// module.exports.getCourseDetails = (id) => {
+// 	return Course.findById(id).then(course => {
+// 		return course
+// 	})
+// }
